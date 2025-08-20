@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expenses Recorder</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="expenses.css" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <h2 class="main-title">
+        <i class="fas fa-chart-line"></i>
+        Expenses Recorder
+      </h2>
+      <div class="form-container">
+        <form action="" class="expense-form">
+          <div class="form-group">
+            <label for="type" class="form-label">
+              <i class="fas fa-tags"></i>
+              Type
+            </label>
+            <select name="type" id="type-options" class="form-select">
+              <option value="expense">💸 Expense</option>
+              <option value="income">💰 Income</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="title" class="form-label">
+              <i class="fas fa-heading"></i>
+              Title
+            </label>
+            <input
+              type="text"
+              placeholder="Enter title..."
+              id="title-input"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">
+              <i class="fas fa-align-left"></i>
+              Description
+            </label>
+            <textarea
+              name=""
+              id="description-input"
+              placeholder="Enter description..."
+              class="form-textarea"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="amount" class="form-label">
+              <i class="fas fa-dollar-sign"></i>
+              Amount
+            </label>
+            <input
+              type="number"
+              placeholder="Amount in GH¢..."
+              id="amount-input"
+              class="form-input"
+            />
+          </div>
+
+          <button
+            onclick="event.preventDefault()"
+            id="add-btn"
+            class="btn btn-primary"
+          >
+            <i class="fas fa-plus"></i>
+            Add Expense
+          </button>
+        </form>
+      </div>
+
+      <div class="message-container" id="message-container"></div>
+
+      <div class="table-container">
+        <h2 class="section-title">
+          <i class="fas fa-table"></i>
+          Expenses
+        </h2>
+        <table class="expenses-table">
+          <thead>
+            <tr>
+              <th><i class="fas fa-tag"></i> Type</th>
+              <th><i class="fas fa-heading"></i> Title</th>
+              <th><i class="fas fa-align-left"></i> Description</th>
+              <th><i class="fas fa-money-bill-wave"></i> Amount (GH¢)</th>
+              <th><i class="fas fa-cogs"></i> Actions</th>
+            </tr>
+          </thead>
+          <tbody id="expenses-container"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="./expenses.js"></script>
+  </body>
+</html>
