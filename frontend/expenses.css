@@ -355,6 +355,26 @@ main {
   text-transform: capitalize;
 }
 
+.action-btn-container {
+  display: flex;
+}
+
+.btn-edit {
+  background: rgb(255, 196, 0);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-edit:hover {
+  background: rgb(207, 159, 1);
+  color: white;
+}
+
 /* Icon animations */
 .btn:hover i {
   transform: scale(1.1);

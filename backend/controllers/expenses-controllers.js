@@ -67,9 +67,11 @@ exports.insertExpenses = (req, res) => {
       console.error("Error inserting expense:", err);
       return res.status(500).json({
         error: "Database error!",
+        success: false
       });
     } else {
       res.status(201).json({
+        success: true,
         message: "Expense inserted successfully",
         expense: {
           id: results.insertId,
@@ -121,7 +123,6 @@ exports.updateExpenses = (req, res) => {
 };
 
 exports.deleteExpenses = (req, res) => {
-  
   const id = req.params.id;
 
   const deleteQuery = "DELETE FROM expenses WHERE id = ?";
@@ -137,10 +138,13 @@ exports.deleteExpenses = (req, res) => {
       console.log("Your data does not match any expense!");
       return res.status(404).json({
         error: "Check your data well!",
+        success: false,
       });
     } else {
       res.status(201).json({
         message: "Expense deleted successfully!",
+        success: true,
+        id: parseInt(id),
       });
     }
   });
