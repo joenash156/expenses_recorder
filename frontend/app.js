@@ -1,4 +1,9 @@
-const API_BASE = "http://localhost:5000/api/expenses";
+const API_BASE =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000/api/expenses"
+    : "https://expenses-recorder-backend.onrender.com/api/expenses";
+
 const messageContainer = document.getElementById("message-container");
 const expensesContainer = document.getElementById("expenses-container");
 
@@ -130,7 +135,6 @@ let currentUpdateId = null;
 
 // function to open the update form
 function openUpdateExpenseForm(id) {
-
   currentUpdateId = id;
 
   if (
@@ -173,11 +177,12 @@ closeBtn.addEventListener("click", closeUpdateExpenseForm);
 
 function closeUpdateExpenseForm() {
   updateExpenseFormContainer.classList.add("update-expense-form-container");
-  updateExpenseFormContainer.classList.remove("update-expense-form-container-active");
+  updateExpenseFormContainer.classList.remove(
+    "update-expense-form-container-active"
+  );
   overlay.classList.add("overlay");
   overlay.classList.remove("overlay-active");
 }
-
 
 // function to update the expense
 function updateExpense(currentUpdateId) {
