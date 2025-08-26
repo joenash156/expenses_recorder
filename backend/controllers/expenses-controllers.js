@@ -67,7 +67,7 @@ exports.insertExpenses = (req, res) => {
       console.error("Error inserting expense:", err);
       return res.status(500).json({
         error: "Database error!",
-        success: false
+        success: false,
       });
     } else {
       res.status(201).json({

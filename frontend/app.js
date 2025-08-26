@@ -25,7 +25,9 @@ function fetchExpenses() {
           " class="btn btn-danger">
             <i class='fas fa-trash'></i>
           </button>
-            <button onClick="" class='btn btn-edit'>
+            <button onClick="
+              openUpdateExpenseForm(${expenses[i].id});
+            " class='btn btn-edit'>
               <i class='fas fa-edit'></i>
             </button>
         </td>
@@ -63,6 +65,7 @@ function deleteExpense(id) {
 
 // make the delete funciton a global variable
 window.deleteExpense = deleteExpense;
+window.openUpdateExpenseForm = openUpdateExpenseForm;
 
 // grab the form
 const expenseForm = document.getElementById("expense-form");
@@ -107,5 +110,105 @@ function handleFormSubmit() {
     });
 }
 
-// function to update the database
-function updateExpense(id) {}
+// grab elements used neccessary for the update
+const updateExpenseFormContainer = document.getElementById(
+  "update-expense-form-container"
+);
+const overlay = document.getElementById("overlay");
+// grab the inputs
+let updateTypeInput = document.getElementById("update-type-option");
+let updateTitleInput = document.getElementById("update-title-input");
+let updateDescriptionInput = document.getElementById(
+  "update-description-input"
+);
+let updateAmountInput = document.getElementById("update-amount-input");
+
+let currentUpdateId = null;
+
+// function to open the update form
+function openUpdateExpenseForm(id) {
+
+  currentUpdateId = id;
+
+  if (
+    updateExpenseFormContainer.classList.contains(
+      "update-expense-form-container"
+    )
+  ) {
+    updateExpenseFormContainer.classList.remove(
+      "update-expense-form-container"
+    );
+    updateExpenseFormContainer.classList.add(
+      "update-expense-form-container-active"
+    );
+    overlay.classList.remove("overlay");
+    overlay.classList.add("overlay-active");
+  }
+
+  fetch(`${API_BASE}/${id}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        const expense = data.data;
+
+        updateTypeInput.value = expense.type;
+        updateTitleInput.value = expense.title;
+        updateDescriptionInput.value = expense.description;
+        updateAmountInput.value = expense.amount;
+
+        updateExpense(expense.id);
+      }
+    });
+}
+
+// grab the elements for closing
+const closeBtn = document.getElementById("close-btn");
+
+closeBtn.addEventListener("click", closeUpdateExpenseForm);
+
+function closeUpdateExpenseForm() {
+  updateExpenseFormContainer.classList.add("update-expense-form-container");
+  updateExpenseFormContainer.classList.remove("update-expense-form-container-active");
+  overlay.classList.add("overlay");
+  overlay.classList.remove("overlay-active");
+}
+
+
+// function to update the expense
+function updateExpense(currentUpdateId) {
+  const updateExpenseForm = document.getElementById("update-expense-form");
+
+  updateExpenseForm.addEventListener("submit", handleUpdateSubmit);
+
+  function handleUpdateSubmit() {
+    //event.preventDefault();
+
+    const updateType = updateTypeInput.value;
+    const updateTitle = updateTitleInput.value;
+    const updateDescription = updateDescriptionInput.value;
+    const updateAmount = updateAmountInput.value;
+
+    const updatedExpense = {
+      type: updateType,
+      title: updateTitle,
+      description: updateDescription,
+      amount: updateAmount,
+    };
+
+    fetch(`${API_BASE}/${currentUpdateId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedExpense),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((err) => {
+        console.error("Failed to update expense:", err);
+      });
+  }
+}

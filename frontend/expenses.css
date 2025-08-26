@@ -31,6 +31,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
+  position: relative;
 }
 
 main {
@@ -531,4 +532,266 @@ main {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
+}
+
+.update-expense-form-container {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  transform: translateY(-300px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+}
+
+.update-expense-form-container-active {
+  position: fixed;
+  top: 1%;
+  left: 35%;
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--primary-color);
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+  z-index: 2;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow: visible;
+}
+
+.update-expense-form-container-active form {
+  gap: 1.25rem;
+}
+
+.update-expense-form-container-active label {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.update-expense-form-container-active label i {
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.update-expense-form-container-active label:hover {
+  color: var(--primary-color);
+}
+
+.update-expense-form-container-active label:hover i {
+  color: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+.update-expense-form-container-active input,
+.update-expense-form-container-active select,
+.update-expense-form-container-active textarea {
+  width: 100%;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 1rem 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  outline: none;
+  position: relative;
+}
+
+.update-expense-form-container-active input:hover,
+.update-expense-form-container-active select:hover,
+.update-expense-form-container-active textarea:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+}
+
+.update-expense-form-container-active input:focus,
+.update-expense-form-container-active select:focus,
+.update-expense-form-container-active textarea:focus {
+  border-color: var(--primary-color);
+  background: var(--bg-secondary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15),
+              0 8px 25px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+.update-expense-form-container-active input::placeholder,
+.update-expense-form-container-active textarea::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.update-expense-form-container-active textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.update-expense-form-container-active .update-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.update-expense-form-container-active .update-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.update-expense-form-container-active .update-btn:hover::before {
+  left: 100%;
+}
+
+.update-expense-form-container-active .update-btn:hover {
+  background: linear-gradient(135deg, var(--primary-dark), #3730a3);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+}
+
+.update-expense-form-container-active .update-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.update-expense-form-container-active .update-btn i {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.update-expense-form-container-active .update-btn:hover i {
+  transform: scale(1.1) rotate(180deg);
+}
+
+.update-expense-form-container-active button:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.update-expense-form-container-active button:active {
+  transform: translateY(0);
+}
+
+.update-expense-form-container-active button.btn-danger {
+  background: linear-gradient(135deg, var(--danger-color), #dc2626);
+  color: white;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.update-expense-form-container-active .btn-danger:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.update-expense-form-container-active .btn-danger:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Enhanced Close Button */
+.update-expense-form-container-active .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update-expense-form-container-active .close-btn:hover {
+  background: var(--danger-color);
+  border-color: var(--danger-color);
+  color: white;
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.update-expense-form-container-active .close-btn:active {
+  transform: scale(1.05) rotate(90deg);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.update-expense-form-container-active .close-btn i {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.update-expense-form-container-active .close-btn:active {
+  color: var(--primary-dark);
+  background: rgba(99,102,241,0.08);
+  transform: scale(1.05) rotate(0deg);
+}
+
+.overlay {
+  display: none;
+}
+
+.overlay-active {
+  position: absolute;
+  background-color: rgba(26, 28, 26, 0.694);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
