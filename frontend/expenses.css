@@ -535,17 +535,22 @@ main {
 }
 
 .update-expense-form-container {
-  position: absolute;
+  position: fixed;
   top: 30%;
   left: 35%;
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--primary-color);
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+  z-index: 2;
   transform: translateY(-300px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: var(--shadow-lg);
-  border-radius: var(--radius-lg);
+  overflow: visible;
 }
 
 .update-expense-form-container-active {
