@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const app = express();
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
@@ -10,8 +11,9 @@ app.use(express.json());
 const allowedOrigins = [
   "http://127.0.0.1:5500", // when testing with Live Server
   "http://localhost:5500", // some setups use localhost instead of 127.0.0.1
+  "http://localhost:5000", // some setups use localhost instead of 127.0.0.1
   "http://localhost:3000", // if you use React locally
-  "https://your-frontend.netlify.app" // 🔴 replace with your Netlify domain
+  "https://your-frontend.netlify.app", // 🔴 replace with your Netlify domain
 ];
 
 // ✅ Setup CORS
@@ -25,7 +27,7 @@ app.use(
       }
     },
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
+    credentials: true,
   })
 );
 
