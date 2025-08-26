@@ -744,7 +744,7 @@ main {
 /* Enhanced Close Button */
 .update-expense-form-container-active .close-btn {
   position: absolute;
-  top: 1rem;
+  top: 0.3rem;
   right: 1rem;
   width: 2.5rem;
   height: 2.5rem;
@@ -799,4 +799,63 @@ main {
   left: 0;
   right: 0;
   z-index: 1;
+}
+
+/* Mobile and Tablet responsiveness for update form */
+@media (max-width: 768px) {
+  .update-expense-form-container,
+  .update-expense-form-container-active {
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-300px) !important;
+    max-width: 90% !important;
+    padding: 1.5rem !important;
+  }
+  
+  .update-expense-form-container-active {
+    transform: translateX(-50%) translateY(0) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .update-expense-form-container,
+  .update-expense-form-container-active {
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-300px) !important;
+    max-width: 95% !important;
+    padding: 1rem !important;
+    top: 20% !important;
+  }
+  
+  .update-expense-form-container-active {
+    transform: translateX(-50%) translateY(0) !important;
+    top: 10% !important;
+  }
+  
+  /* Table horizontal scroll for mobile */
+  .table-container {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .expenses-table {
+    min-width: 600px;
+    width: auto;
+  }
+  
+  .expenses-table th,
+  .expenses-table td {
+    white-space: nowrap;
+    min-width: 100px;
+  }
+  
+  .expenses-table th:first-child,
+  .expenses-table td:first-child {
+    min-width: 80px;
+  }
+  
+  .expenses-table th:last-child,
+  .expenses-table td:last-child {
+    min-width: 120px;
+  }
 }

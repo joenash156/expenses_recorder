@@ -1,5 +1,5 @@
 const API_BASE = "http://localhost:5000/api/expenses";
-const outputElement = document.getElementById("output-container");
+const messageContainer = document.getElementById("message-container");
 const expensesContainer = document.getElementById("expenses-container");
 
 // function to fetch expenses from database
@@ -104,6 +104,9 @@ function handleFormSubmit() {
   })
     .then((response) => {
       return response.json();
+    })
+    .then(() => {
+      messageContainer.innerHTML = `<p class="success-message">Expense added successfully!</p>`;
     })
     .catch((err) => {
       console.error("Failed to insert expenses to database!:", err);
