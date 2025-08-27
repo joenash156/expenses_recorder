@@ -9,14 +9,15 @@ app.use(cors());
 app.use(express.json());
 
 const allowedOrigins = [
-  "http://127.0.0.1:5500", // when testing with Live Server
-  "http://localhost:5500", // some setups use localhost instead of 127.0.0.1
-  "http://localhost:5000", // some setups use localhost instead of 127.0.0.1
-  "http://localhost:3000", // if you use React locally
-  "https://expenses-recorder.netlify.app/", // 🔴 replace with your Netlify domain
+  "http://127.0.0.1:5500",
+  "http://localhost:5500",
+  "http://localhost:5000",
+  "http://localhost:3000",
+  "https://expenses-recorder.netlify.app/",
+  "https://expenses-recorder-ebon.vercel.app/"
 ];
 
-// ✅ Setup CORS
+// Setup CORS
 app.use(
   cors({
     origin: function (origin, callback) {
