@@ -15,6 +15,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "https://expenses-recorder.netlify.app/",
   "https://expenses-recorder-ebon.vercel.app/",
+  "https://expense-recorder.onrender.com/"
 ];
 
 // Setup CORS
