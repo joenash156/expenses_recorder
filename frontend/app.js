@@ -2,7 +2,7 @@ const API_BASE =
   window.location.hostname === "localhost" ||
   window.location.hostname === "127.0.0.1"
     ? "http://localhost:5000/api/expenses"
-    : "https://expenses-recorder-n99u.vercel.app/api/expenses";
+    : "https://expenses-recorder-4kac.onrender.com/api/expenses";
 
 const messageContainer = document.getElementById("message-container");
 const expensesContainer = document.getElementById("expenses-container");
