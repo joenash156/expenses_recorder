@@ -13,7 +13,7 @@ const allowedOrigins = [
   "http://localhost:5500", // some setups use localhost instead of 127.0.0.1
   "http://localhost:5000", // some setups use localhost instead of 127.0.0.1
   "http://localhost:3000", // if you use React locally
-  "https://your-frontend.netlify.app", // 🔴 replace with your Netlify domain
+  "https://expenses-recorder.netlify.app/", // 🔴 replace with your Netlify domain
 ];
 
 // ✅ Setup CORS
