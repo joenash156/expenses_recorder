@@ -5,6 +5,8 @@ const db = mysql.createConnection({
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASS || "",
   database: process.env.DB_NAME || "expensesdb",
+  port: process.env.DB_PORT || 3306,
+  ssl: { rejectUnauthorized: false },
 });
 
 // connect to mysql database
